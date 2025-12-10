@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func addAvatarImageView(){
-        avatarImageView.image = UIImage(named: "2")
+        avatarImageView.image = UIImage(named: "ProfileImage")
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(avatarImageView)
         
