@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     private let avatarImageView = UIImageView()
     private let nameLabel = UILabel()
@@ -8,9 +8,6 @@ class ProfileViewController: UIViewController {
     private let descriptionLabel = UILabel()
     private let logoutButton = UIButton()
 
-    @IBAction private func didTapLogoutButton() {
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +18,8 @@ class ProfileViewController: UIViewController {
         addDescriptionLabel()
  
     }
+    
+    @IBAction private func didTapLogoutButton() { }
     
     private func addAvatarImageView(){
         avatarImageView.image = UIImage(named: "ProfileImage")
