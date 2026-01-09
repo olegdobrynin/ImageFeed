@@ -260,7 +260,7 @@
                     <navigationItem key="navigationItem" id="krS-Qe-OBb"/>
                     <connections>
                         <outlet property="progressView" destination="DaS-kH-3FX" id="X8c-aY-NRF"/>
-                        <outlet property="webView" destination="E9f-YV-c4A" id="dUH-CE-Z1Y"/>
+                        <outlet property="webView" destination="E9f-YV-c4A" id="OVo-is-wtl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0X-MH-nwA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
