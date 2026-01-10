@@ -8,18 +8,14 @@ private enum AuthServiceError: Error {
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
-
     private let token = OAuth2TokenStorage.shared
-
     private let urlSession = URLSession.shared
-
     private var task: URLSessionTask?
-
     private var lastCode: String?
 
     private(set) var authToken: String? {
         get {
-            return token.token
+            token.token
         }
         set {
             token.token = newValue
