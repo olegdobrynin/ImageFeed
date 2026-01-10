@@ -59,7 +59,9 @@ final class OAuth2Service {
     ) {
         guard let request = makeOAuthTokenRequest(code: code)
         else {
-            completion(.failure(AuthServiceError.invalidRequest))
+            DispatchQueue.main.async {
+                completion(.failure(AuthServiceError.invalidRequest))
+            }
             return
         }
 
