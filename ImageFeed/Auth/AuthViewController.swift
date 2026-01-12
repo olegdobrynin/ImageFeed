@@ -56,7 +56,6 @@ extension AuthViewController: WebViewViewControllerDelegate {
         _ vc: WebViewViewController,
         didAuthenticateWithCode code: String
     ) {
-        vc.dismiss(animated: true)
         ProgressHUD.animate()
         
         fetchOAuthToken(code) { [weak self] result in
