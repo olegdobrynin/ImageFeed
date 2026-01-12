@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CB9A9B42F15310800BD2740 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB9A9B32F15310800BD2740 /* ProgressHUD */; };
 		1CF3834C2F1131FE00BE341F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF3834A2F1131B800BE341F /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CF3834C2F1131FE00BE341F /* WebKit.framework in Frameworks */,
+				1CB9A9B42F15310800BD2740 /* ProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,7 @@
 			);
 			name = ImageFeed;
 			packageProductDependencies = (
+				1CB9A9B32F15310800BD2740 /* ProgressHUD */,
 			);
 			productName = ImageFeed;
 			productReference = 1C5ABF862E94575D001F9F3D /* ImageFeed.app */;
@@ -122,6 +125,9 @@
 			);
 			mainGroup = 1C5ABF7D2E94575D001F9F3D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1CB9A9B22F15310800BD2740 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C5ABF872E94575D001F9F3D /* Products */;
 			projectDirPath = "";
@@ -366,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1CB9A9B22F15310800BD2740 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1CB9A9B32F15310800BD2740 /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CB9A9B22F15310800BD2740 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C5ABF7E2E94575D001F9F3D /* Project object */;
 }
