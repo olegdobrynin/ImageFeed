@@ -12,7 +12,7 @@ final class OAuth2Service {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private var lastCode: String?
-
+    
     private(set) var authToken: String? {
         get {
             token.token
@@ -21,9 +21,9 @@ final class OAuth2Service {
             token.token = newValue
         }
     }
-
+    
     private init() {}
-
+    
     private func makeOAuthTokenRequest(code: String) -> URLRequest? {
         guard
             var components = URLComponents(
@@ -37,18 +37,18 @@ final class OAuth2Service {
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code"),
         ]
-
+        
         guard let authTokenUrl = components.url else {
             return nil
         }
-
+        
         var request = URLRequest(url: authTokenUrl)
         request.httpMethod = "POST"
-
+        
         print("Реквест", request)
         return request
     }
-
+    
     func fetchOAuthToken(
         _ code: String,
         completion: @escaping (Result<String, Error>) -> Void
@@ -58,10 +58,10 @@ final class OAuth2Service {
             completion(.failure(AuthServiceError.invalidRequest))
             return
         }
-
+        
         task?.cancel()
         lastCode = code
-
+        
         guard let request = makeOAuthTokenRequest(code: code)
         else {
             DispatchQueue.main.async {
@@ -69,7 +69,7 @@ final class OAuth2Service {
             }
             return
         }
-
+        
         let task = urlSession.objectTask(for: request) {
             [weak self]
             (result: Result<OAuthTokenResponseBody, Error>) in
@@ -80,7 +80,7 @@ final class OAuth2Service {
                     let authToken = body.accessToken
                     self.authToken = authToken
                     completion(.success(authToken))
-
+                    
                     self.task = nil
                     self.lastCode = nil
                 case .failure(let error):
@@ -88,7 +88,7 @@ final class OAuth2Service {
                         "[fetchOAuthToken]: Ошибка запроса: \(error.localizedDescription)"
                     )
                     completion(.failure(error))
-
+                    
                     self.task = nil
                     self.lastCode = nil
                 }
@@ -113,7 +113,7 @@ extension OAuth2Service {
         for request: URLRequest,
         completion: @escaping (Result<OAuthTokenResponseBody, Error>) -> Void
     ) -> URLSessionTask {
-
+        
         let decoder = JSONDecoder()
         return urlSession.data(for: request) { (result: Result<Data, Error>) in
             switch result {

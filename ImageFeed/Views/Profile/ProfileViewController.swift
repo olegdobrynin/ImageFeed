@@ -7,7 +7,7 @@ final class ProfileViewController: UIViewController {
     private let loginLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let logoutButton = UIButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,11 +16,26 @@ final class ProfileViewController: UIViewController {
         addNameLabel()
         addLoginLabel()
         addDescriptionLabel()
-
+        
+        if let profile = ProfileService.shared.profile {
+            updateProfileDetails(with: profile)
+        }
     }
 
     @IBAction private func didTapLogoutButton() {}
 
+    private func updateProfileDetails(with profile: Profile) {
+        nameLabel.text = profile.name.isEmpty
+            ? "Имя не указано"
+            : profile.name
+        loginLabel.text = profile.loginName.isEmpty
+            ? "@неизвестный_пользователь"
+            : profile.loginName
+        descriptionLabel.text = (profile.bio?.isEmpty ?? true)
+            ? "Профиль не заполнен"
+            : profile.bio
+    }
+    
     private func addAvatarImageView() {
         avatarImageView.image = UIImage(named: "ProfileImage")
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false

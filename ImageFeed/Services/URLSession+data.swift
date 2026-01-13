@@ -19,12 +19,12 @@ extension URLSession {
                 completion(result)
             }
         }
-
+        
         let task = dataTask(
             with: request,
             completionHandler: { data, response, error in
                 if let data = data, let response = response,
-                    let statusCode = (response as? HTTPURLResponse)?.statusCode
+                   let statusCode = (response as? HTTPURLResponse)?.statusCode
                 {
                     if 200..<300 ~= statusCode {
                         fulfillCompletionOnTheMainThread(.success(data))  // 3
@@ -44,7 +44,7 @@ extension URLSession {
                 }
             }
         )
-
+        
         return task
     }
 }
@@ -54,10 +54,10 @@ extension URLSession {
         for request: URLRequest,
         completion: @escaping (Result<T, Error>) -> Void
     ) -> URLSessionTask {
-
+        
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-
+        
         let task = data(for: request) { (result: Result<Data, Error>) in
             switch result {
             case .success(let data):
