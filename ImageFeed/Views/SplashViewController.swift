@@ -12,7 +12,7 @@ final class SplashViewController: UIViewController {
         
         if let token = storage.token {
             fetchProfile(token: token)
-                    } else {
+        } else {
             performSegue(
                 withIdentifier: showAuthenticationScreenSegueIdentifier,
                 sender: nil
@@ -49,17 +49,15 @@ final class SplashViewController: UIViewController {
         profileService.fetchProfile(token) { [weak self] result in
             UIBlockingProgressHUD.dismiss()
             
-            guard let self else {
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case let .success(profile):
                 ProfileImageService.shared.fetchProfileImageURL(username: profile.username) { _ in }
                 self.switchToTabBarController()
                 
-            case .failure:
-                // TODO [Sprint 11] Покажите ошибку получения профиля
+            case let .failure(error):
+                print(error)
                 break
             }
         }

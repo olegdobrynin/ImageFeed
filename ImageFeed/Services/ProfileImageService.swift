@@ -37,25 +37,18 @@ final class ProfileImageService {
             return
         }
         
-        let task = URLSession.shared.data(for: request) { [weak self] result in
+        let task = URLSession.shared.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             switch result {
-            case .success(let data):
+            case .success(let result):
                 guard let self else { return }
-
-                do {
-                    let userResult = try JSONDecoder().decode(UserResult.self, from: data)
-
-                    self.avatarURL = userResult.profileImage.small
-                    completion(.success(userResult.profileImage.small))
-                    NotificationCenter.default                                     // 1
-                        .post(                                                     // 2
-                            name: ProfileImageService.didChangeNotification,       // 3
-                            object: self,                                          // 4
-                            userInfo: ["URL": userResult.profileImage.small])                    // 5
-                } catch {
-                    print(error)
-                }
-
+                self.avatarURL = result.profileImage.small
+                completion(.success(result.profileImage.small))
+                NotificationCenter.default
+                    .post(
+                        name: ProfileImageService.didChangeNotification,
+                        object: self,
+                        userInfo: ["URL": result.profileImage.small])
+                
             case .failure(let error):
                 print("[fetchProfileImageURL]: Ошибка запроса: \(error.localizedDescription)")
                 completion(.failure(error))
@@ -69,7 +62,7 @@ final class ProfileImageService {
         guard let url = URL(string: "https://api.unsplash.com/users/\(username)") else {
             return nil
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
