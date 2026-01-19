@@ -7,6 +7,7 @@ final class ProfileViewController: UIViewController {
     private let loginLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let logoutButton = UIButton()
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,17 @@ final class ProfileViewController: UIViewController {
         if let profile = ProfileService.shared.profile {
             updateProfileDetails(with: profile)
         }
+        
+        profileImageServiceObserver = NotificationCenter.default
+                .addObserver(
+                    forName: ProfileImageService.didChangeNotification,
+                    object: nil,
+                    queue: .main
+                ) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.updateAvatar() 
+                }
+        updateAvatar()
     }
 
     @IBAction private func didTapLogoutButton() {}
@@ -35,6 +47,14 @@ final class ProfileViewController: UIViewController {
             ? "Профиль не заполнен"
             : profile.bio
     }
+    
+    private func updateAvatar() {                                   // 8
+            guard
+                let profileImageURL = ProfileImageService.shared.avatarURL,
+                let url = URL(string: profileImageURL)
+            else { return }
+            // TODO [Sprint 11] Обновить аватар, используя Kingfisher
+        }
     
     private func addAvatarImageView() {
         avatarImageView.image = UIImage(named: "ProfileImage")
