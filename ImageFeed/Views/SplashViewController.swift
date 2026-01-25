@@ -56,12 +56,15 @@ final class SplashViewController: UIViewController {
                 ProfileImageService.shared.fetchProfileImageURL(username: profile.username) { _ in }
                 self.switchToTabBarController()
                 
-            case let .failure(error):
-                print(error)
+            case .failure:
+                print("Fetch profile failed")
                 break
+                
             }
         }
     }
+    
+    
 }
 
 extension SplashViewController {
@@ -95,3 +98,4 @@ extension SplashViewController: AuthViewControllerDelegate {
         fetchProfile(token: token)
     }
 }
+
