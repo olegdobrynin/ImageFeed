@@ -1,27 +1,32 @@
 import Foundation
 import SwiftKeychainWrapper
 
+
 final class OAuth2TokenStorage {
+
+    // MARK: - Singleton
+
     static let shared = OAuth2TokenStorage()
     private init() {}
-    
+
+    // MARK: - Dependencies
+
     private let userDefaults = UserDefaults.standard
-    
+
+    // MARK: - Constants
+
     private let tokenKey = "Auth token"
-    
-    
-    
+
+    // MARK: - Public API
+
     var token: String? {
         get {
-            return KeychainWrapper.standard.string(forKey: tokenKey)
+            KeychainWrapper.standard.string(forKey: tokenKey)
         }
         set {
-            if let token = newValue {
-                let isSuccess = KeychainWrapper.standard.set(token, forKey: tokenKey)
-                guard isSuccess else {
-                    return
-                }
-            }
+            guard let token = newValue else { return }
+            KeychainWrapper.standard.set(token, forKey: tokenKey)
         }
     }
 }
+
