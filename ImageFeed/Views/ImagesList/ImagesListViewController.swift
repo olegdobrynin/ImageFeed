@@ -24,6 +24,7 @@ final class ImagesListViewController: UIViewController {
             bottom: 12,
             right: 0
         )
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,10 +81,7 @@ extension ImagesListViewController {
         cell.dateLabel.text = dateFormatter.string(from: Date())
 
         let isLiked = indexPath.row % 2 == 0
-        let likeImage =
-            isLiked
-            ? UIImage(named: "like_button_on")
-            : UIImage(named: "like_button_off")
+        let likeImage = isLiked ? UIImage(named: "Active") : UIImage(named: "No Active")
         cell.likeButton.setImage(likeImage, for: .normal)
     }
 }
