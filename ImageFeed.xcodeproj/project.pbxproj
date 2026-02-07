@@ -30,6 +30,10 @@
 		1CB9AA7A2F34CB1800BD2740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CB9AA602F34CB1800BD2740 /* Assets.xcassets */; };
 		1CB9AA7C2F34CB1800BD2740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB9AA642F34CB1800BD2740 /* LaunchScreen.storyboard */; };
 		1CB9AA7D2F34CB1800BD2740 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB9AA662F34CB1800BD2740 /* Main.storyboard */; };
+		1CB9AA7F2F34D83B00BD2740 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9AA7E2F34D83B00BD2740 /* ImagesListService.swift */; };
+		1CB9AAC62F34F01100BD2740 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9AAC52F34F01100BD2740 /* Formatter.swift */; };
+		1CB9AAC82F34F12700BD2740 /* Photo+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9AAC72F34F12700BD2740 /* Photo+Array.swift */; };
+		1CB9AB9B2F37C25A00BD2740 /* ProfileLogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB9AB9A2F37C25A00BD2740 /* ProfileLogoutService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		1CB9AA632F34CB1800BD2740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CB9AA652F34CB1800BD2740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CB9AA672F34CB1800BD2740 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1CB9AA7E2F34D83B00BD2740 /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		1CB9AAC52F34F01100BD2740 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		1CB9AAC72F34F12700BD2740 /* Photo+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Array.swift"; sourceTree = "<group>"; };
+		1CB9AB9A2F37C25A00BD2740 /* ProfileLogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		1CB9AA4F2F34CB1800BD2740 /* ProfileServices */ = {
 			isa = PBXGroup;
 			children = (
+				1CB9AB9A2F37C25A00BD2740 /* ProfileLogoutService.swift */,
 				1CB9AA4D2F34CB1800BD2740 /* ProfileImageService.swift */,
 				1CB9AA4E2F34CB1800BD2740 /* ProfileService.swift */,
 			);
@@ -108,6 +117,9 @@
 		1CB9AA512F34CB1800BD2740 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1CB9AAC72F34F12700BD2740 /* Photo+Array.swift */,
+				1CB9AAC52F34F01100BD2740 /* Formatter.swift */,
+				1CB9AA7E2F34D83B00BD2740 /* ImagesListService.swift */,
 				1CB9AA4C2F34CB1800BD2740 /* OAuth2 */,
 				1CB9AA4F2F34CB1800BD2740 /* ProfileServices */,
 				1CB9AA502F34CB1800BD2740 /* URLSession+data.swift */,
@@ -258,17 +270,21 @@
 				1CB9AA6B2F34CB1800BD2740 /* ProfileImageService.swift in Sources */,
 				1CB9AA6C2F34CB1800BD2740 /* ProfileService.swift in Sources */,
 				1CB9AA6D2F34CB1800BD2740 /* URLSession+data.swift in Sources */,
+				1CB9AAC82F34F12700BD2740 /* Photo+Array.swift in Sources */,
 				1CB9AA6E2F34CB1800BD2740 /* AuthViewController.swift in Sources */,
 				1CB9AA6F2F34CB1800BD2740 /* WebViewViewController.swift in Sources */,
 				1CB9AA702F34CB1800BD2740 /* ImagesListCell.swift in Sources */,
 				1CB9AA712F34CB1800BD2740 /* ImagesListViewController.swift in Sources */,
 				1CB9AA722F34CB1800BD2740 /* ProfileViewController.swift in Sources */,
+				1CB9AB9B2F37C25A00BD2740 /* ProfileLogoutService.swift in Sources */,
 				1CB9AA732F34CB1800BD2740 /* SingleImageViewController.swift in Sources */,
 				1CB9AA742F34CB1800BD2740 /* SplashViewController.swift in Sources */,
 				1CB9AA752F34CB1800BD2740 /* TabBarController.swift in Sources */,
+				1CB9AA7F2F34D83B00BD2740 /* ImagesListService.swift in Sources */,
 				1CB9AA762F34CB1800BD2740 /* UIBlockingProgressHUD.swift in Sources */,
 				1CB9AA772F34CB1800BD2740 /* AppDelegate.swift in Sources */,
 				1CB9AA782F34CB1800BD2740 /* Constants.swift in Sources */,
+				1CB9AAC62F34F01100BD2740 /* Formatter.swift in Sources */,
 				1CB9AA792F34CB1800BD2740 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
