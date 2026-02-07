@@ -54,8 +54,11 @@ final class SingleImageViewController: UIViewController {
             let photo = photo,
             let url = URL(string: photo.largeImageURL)
         else { return }
-
+        
+        imageView.kf.indicatorType = .activity
+        UIBlockingProgressHUD.show()
         imageView.kf.setImage(with: url) { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
             guard let self = self else { return }
 
             if case .success(let value) = result {
