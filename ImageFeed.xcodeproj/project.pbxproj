@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C4DBFBB2F3B40E200D09A85 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DBFBA2F3B40E200D09A85 /* Notification.swift */; };
+		1C4DBFBD2F3B417300D09A85 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DBFBC2F3B417300D09A85 /* HTTPMethod.swift */; };
 		1CB9AA412F34C89800BD2740 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB9AA402F34C89800BD2740 /* SwiftKeychainWrapper */; };
 		1CB9AA442F34C89F00BD2740 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB9AA432F34C89F00BD2740 /* Kingfisher */; };
 		1CB9AA472F34C8A600BD2740 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 1CB9AA462F34C8A600BD2740 /* ProgressHUD */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C4DBFBA2F3B40E200D09A85 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		1C4DBFBC2F3B417300D09A85 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		1C5ABF862E94575D001F9F3D /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB9AA4A2F34CB1800BD2740 /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		1CB9AA4B2F34CB1800BD2740 /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		1CB9AA512F34CB1800BD2740 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1C4DBFBC2F3B417300D09A85 /* HTTPMethod.swift */,
+				1C4DBFBA2F3B40E200D09A85 /* Notification.swift */,
 				1CB9AAC72F34F12700BD2740 /* Photo+Array.swift */,
 				1CB9AAC52F34F01100BD2740 /* Formatter.swift */,
 				1CB9AA7E2F34D83B00BD2740 /* ImagesListService.swift */,
@@ -274,6 +280,7 @@
 				1CB9AA6E2F34CB1800BD2740 /* AuthViewController.swift in Sources */,
 				1CB9AA6F2F34CB1800BD2740 /* WebViewViewController.swift in Sources */,
 				1CB9AA702F34CB1800BD2740 /* ImagesListCell.swift in Sources */,
+				1C4DBFBB2F3B40E200D09A85 /* Notification.swift in Sources */,
 				1CB9AA712F34CB1800BD2740 /* ImagesListViewController.swift in Sources */,
 				1CB9AA722F34CB1800BD2740 /* ProfileViewController.swift in Sources */,
 				1CB9AB9B2F37C25A00BD2740 /* ProfileLogoutService.swift in Sources */,
@@ -284,6 +291,7 @@
 				1CB9AA762F34CB1800BD2740 /* UIBlockingProgressHUD.swift in Sources */,
 				1CB9AA772F34CB1800BD2740 /* AppDelegate.swift in Sources */,
 				1CB9AA782F34CB1800BD2740 /* Constants.swift in Sources */,
+				1C4DBFBD2F3B417300D09A85 /* HTTPMethod.swift in Sources */,
 				1CB9AAC62F34F01100BD2740 /* Formatter.swift in Sources */,
 				1CB9AA792F34CB1800BD2740 /* SceneDelegate.swift in Sources */,
 			);

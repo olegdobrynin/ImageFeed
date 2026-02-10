@@ -37,7 +37,7 @@ final class ImagesListService {
 
     private(set) var photos: [Photo] = []
     
-    static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
+    static let didChangeNotification = Notification.Name("ImagesListServiceDidChange")
     
     // MARK: - Private Properties
     
@@ -58,22 +58,20 @@ final class ImagesListService {
         }
         
         let task = URLSession.shared.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let result):
-                    let newPhotos = result.map { Photo(from: $0) }
-                    self?.photos.append(contentsOf: newPhotos)
-                    self?.lastLoadedPage = nextPage
-                    NotificationCenter.default.post(
-                        name: ImagesListService.didChangeNotification,
-                        object:
-                            self
-                    )
-                case .failure(let error):
-                    print("fetchPhotosNextPage error \(error.localizedDescription)")
-                }
-                self?.task = nil
+            switch result {
+            case .success(let result):
+                let newPhotos = result.map { Photo(from: $0) }
+                self?.photos.append(contentsOf: newPhotos)
+                self?.lastLoadedPage = nextPage
+                NotificationCenter.default.post(
+                    name: ImagesListService.didChangeNotification,
+                    object:
+                        self
+                )
+            case .failure(let error):
+                print("fetchPhotosNextPage error \(error.localizedDescription)")
             }
+            self?.task = nil
         }
         self.task = task
         task.resume()
@@ -96,7 +94,7 @@ final class ImagesListService {
             return nil
         }
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = "\(HTTPMethod.get)"
         
         if let token = OAuth2TokenStorage.shared.token {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -116,7 +114,7 @@ final class ImagesListService {
             request = makeUnLikeRequest(id: photoId)
         }
         
-        guard let request = request else {
+        guard let request else {
             let error = NSError(domain: "ImageFeed", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to create like/unlike request"])
             completion(.failure(error))
             return
@@ -124,7 +122,7 @@ final class ImagesListService {
         
         let task = URLSession.shared.data(for: request) { result in
             switch result {
-            case .success(_):
+            case .success:
                 if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
                     let photo = self.photos[index]
                     

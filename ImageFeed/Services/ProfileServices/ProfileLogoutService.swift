@@ -32,7 +32,3 @@ final class ProfileLogoutService {
         }
     }
 }
-
-extension Notification.Name {
-    static let userDidLogout = Notification.Name("userDidLogout")
-}

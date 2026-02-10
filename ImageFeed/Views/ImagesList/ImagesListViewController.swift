@@ -7,7 +7,7 @@ final class ImagesListViewController: UIViewController {
     private let showsSingleImageSegueIdentifier = "ShowSingleImage"
     
     // MARK: - UI
-    private let pleceholderImage = UIImage(named: "Stub")
+    private let placeholderImage = UIImage(named: "Stub")
     
     @IBOutlet private var tableView: UITableView!
     
@@ -97,10 +97,10 @@ extension ImagesListViewController: UITableViewDataSource {
             imageListCell.cellImage.kf.indicatorType = .activity
             imageListCell.cellImage.kf.setImage(
                 with: url,
-                placeholder: pleceholderImage
+                placeholder: placeholderImage
             )
         } else {
-            imageListCell.cellImage.image = pleceholderImage
+            imageListCell.cellImage.image = placeholderImage
         }
         
         if let createAt = photo.createdAt {

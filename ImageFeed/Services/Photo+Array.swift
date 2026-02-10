@@ -7,7 +7,7 @@
 
 
 import Foundation
-internal import CoreGraphics
+import CoreGraphics
 
 extension Photo {
     init(from result: PhotoResult) {

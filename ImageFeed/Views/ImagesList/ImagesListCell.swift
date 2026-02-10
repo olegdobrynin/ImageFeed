@@ -14,7 +14,7 @@ final class ImagesListCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
     
-    @IBAction private func likeButtonCliked() {
+    @IBAction private func likeButtonClicked() {
         delegate?.imageListCellDidTapLike(self)
     }
     
@@ -23,12 +23,3 @@ final class ImagesListCell: UITableViewCell {
         likeButton.setImage(UIImage(named: imageName), for: .normal)
     }
 }
-
-
-
-
-    
-    
-
-
-

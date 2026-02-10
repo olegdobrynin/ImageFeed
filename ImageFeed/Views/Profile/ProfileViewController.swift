@@ -7,7 +7,7 @@ final class ProfileViewController: UIViewController {
     private let nameLabel = UILabel()
     private let loginLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private var logoutButton = UIButton()
+    private lazy var logoutButton = UIButton()
     
     // MARK: - Properties
     private var profileImageServiceObserver: NSObjectProtocol?
