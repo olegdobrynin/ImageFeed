@@ -47,7 +47,7 @@ final class ProfileImageService {
                         userInfo: ["URL": result.profileImage.small])
                 
             case .failure(let error):
-                print("[fetchProfileImageURL]: Ошибка запроса: \(error.localizedDescription)")
+                print("fetchProfileImageURL error: \(error.localizedDescription)")
                 completion(.failure(error))
             }
         }
@@ -64,5 +64,12 @@ final class ProfileImageService {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
+    }
+}
+
+extension ProfileImageService  {
+    func logoutProfileImageService() {
+        self.avatarURL = nil
+        self.task = nil
     }
 }

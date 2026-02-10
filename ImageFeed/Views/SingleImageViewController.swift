@@ -1,5 +1,5 @@
-
 import UIKit
+import Kingfisher
 
 final class SingleImageViewController: UIViewController {
 
@@ -10,10 +10,10 @@ final class SingleImageViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var image: UIImage? {
+    var photo: Photo? {
         didSet {
             guard isViewLoaded else { return }
-            updateImage()
+            loadImage()
         }
     }
 
@@ -22,13 +22,13 @@ final class SingleImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureScrollView()
-        updateImage()
+        loadImage()
     }
 
     // MARK: - Actions
 
     @IBAction private func didTapShareButton(_ sender: UIButton) {
-        guard let image else { return }
+        guard let image = imageView.image else { return }
 
         let activityVC = UIActivityViewController(
             activityItems: [image],
@@ -46,14 +46,26 @@ final class SingleImageViewController: UIViewController {
     private func configureScrollView() {
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
+        scrollView.delegate = self
     }
 
-    private func updateImage() {
-        guard let image else { return }
+    private func loadImage() {
+        guard
+            let photo = photo,
+            let url = URL(string: photo.largeImageURL)
+        else { return }
+        
+        imageView.kf.indicatorType = .activity
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: url) { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
+            guard let self = self else { return }
 
-        imageView.image = image
-        imageView.frame.size = image.size
-        rescaleAndCenterImage(image)
+            if case .success(let value) = result {
+                self.imageView.frame.size = value.image.size
+                self.rescaleAndCenterImage(value.image)
+            }
+        }
     }
 
     private func rescaleAndCenterImage(_ image: UIImage) {
